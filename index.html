@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GARITOTO PERMISSION - Elite Shift Dashboard</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Times New Roman', Times, serif; }
+        body { 
+            background-color: #000; 
+            background-image: radial-gradient(circle at 50% 10%, #0c0a00 0%, #000 80%);
+            color: #d1d5db; 
+            padding: 50px 25px; 
+            min-height: 100vh; 
+        }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; }
+        
+        .header-panel { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 35px 45px; 
+            background-color: #030303;
+            border: 1px solid #665000; 
+            border-left: 6px solid #8d6d00; 
+            border-radius: 12px; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7); 
+            margin-bottom: 40px;
+        }
+        .header-title h1 { 
+            font-size: 32px; 
+            font-weight: 700;
+            color: #fff; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+        }
+        .header-title p { 
+            font-size: 13px; 
+            color: #8d6d00; 
+            margin-top: 6px; 
+            font-weight: 700; 
+            letter-spacing: 1px; 
+            text-transform: uppercase;
+        }
+        
+        .live-indicator { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            background: rgba(141, 109, 0, 0.05); 
+            padding: 10px 20px; 
+            border-radius: 30px; 
+            border: 1px solid rgba(141, 109, 0, 0.2); 
+            font-size: 12px; 
+            color: #a17c00; 
+            font-weight: 700; 
+        }
+        .dot { 
+            width: 10px; 
+            height: 10px; 
+            background-color: #a17c00; 
+            border-radius: 50%; 
+            box-shadow: 0 0 8px #a17c00; 
+        }
+        
+        .db-box { 
+            background-color: #030303;
+            border: 1px solid #1c2635; 
+            border-radius: 12px; 
+            padding: 35px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6); 
+            overflow-x: auto; 
+        }
+        table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 850px; }
+        
+        th { 
+            background-color: #000;
+            color: #94a3b8; 
+            padding: 20px 22px; 
+            font-size: 13px; 
+            font-weight: 700;
+            text-transform: uppercase; 
+            text-align: left; 
+            border-bottom: 2px solid #8d6d00; 
+        }
+        
+        td { 
+            padding: 22px 22px; 
+            font-size: 15px; 
+            border-bottom: 1px solid #0c0c0c; 
+            color: #cbd5e1; 
+        }
+        tr:hover td { background-color: #050505; color: #fff; }
+        
+        .badge-shift {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .shift-pagi { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid #eab308; }
+        .shift-malam { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid #6366f1; }
+
+        .badge { padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; display: inline-block; }
+        .bg-toilet { background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%); color: #000; }
+        .bg-rokok { background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); color: #fff; }
+        .bg-makan { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: #000; }
+        
+        .badge-status { padding: 6px 16px; border-radius: 6px; font-size: 12px; font-weight: 700; display: inline-block; text-transform: uppercase; }
+        .status-proses { background: rgba(141, 109, 0, 0.12); color: #a17c00; border: 1px solid rgba(141, 109, 0, 0.3); }
+        .status-aman { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
+        .status-telat { background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-panel">
+            <div class="header-title">
+                <h1>GARITOTO PERMISSION CONTROL CENTER</h1>
+                <p>SISTEM MONITORING SHIFT & PERMISSION REAL-TIME</p>
+            </div>
+            <div class="live-indicator">
+                <div class="dot"></div> SHIFT INJECTION ENGINE ACTIVE
+            </div>
+        </div>
+
+        <div class="db-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Staf</th>
+                        <th>Shift Kerja</th>
+                        <th>Jenis Aktivitas</th>
+                        <th>Jam Mulai</th>
+                        <th>Jam Kembali</th>
+                        <th>Status / Ketepatan</th>
+                    </tr>
+                </thead>
+                <tbody id="databaseBody">
+                    <tr>
+                        <td colspan="6" style="text-align:center; color:#64748b; padding: 45px; font-size: 14px;">
+                            Menunggu Injeksi Data Pertama dari Bot Python bray...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function loadBotData() {
+            if (typeof dataIzinStaf !== 'undefined' && dataIzinStaf.length > 0) {
+                let html = "";
+                for (let i = dataIzinStaf.length - 1; i >= 0; i--) {
+                    let row = dataIzinStaf[i];
+                    
+                    let badgeClass = "bg-toilet";
+                    if (row.jenis.toLowerCase().includes("rokok")) badgeClass = "bg-rokok";
+                    if (row.jenis.toLowerCase().includes("makan")) badgeClass = "bg-makan";
+
+                    let shiftHtml = row.shift === "PAGI" ? 
+                        `<span class="badge-shift shift-pagi">PAGI (07-19)</span>` : 
+                        `<span class="badge-shift shift-malam">MALAM (19-07)</span>`;
+
+                    let statusHtml = "";
+                    if (row.status === "SEDANG IZIN") {
+                        statusHtml = `<span class="badge-status status-proses">SEDANG IZIN</span>`;
+                    } else if (row.status.includes("TERLAMBAT")) {
+                        statusHtml = `<span class="badge-status status-telat">${row.status}</span>`;
+                    } else {
+                        statusHtml = `<span class="badge-status status-aman">TEPAT WAKTU</span>`;
+                    }
+
+                    html += `<tr>
+                        <td style="font-weight: 700; color: #fff;">${row.nama.toUpperCase()}</td>
+                        <td>${shiftHtml}</td>
+                        <td><span class="badge ${badgeClass}">${row.jenis}</span></td>
+                        <td style="color: #6a6a6a; font-weight: 600;">${row.jam_mulai} WIB</td>
+                        <td style="color: #6a6a6a; font-weight: 600;">${row.jam_kembali}</td>
+                        <td>${statusHtml}</td>
+                    </tr>`;
+                }
+                document.getElementById('databaseBody').innerHTML = html;
+            }
+        }
+
+        loadBotData();
+        setInterval(function() {
+            const oldScript = document.getElementById('db-data-script');
+            if (oldScript) oldScript.remove();
+            const newScript = document.createElement('script');
+            newScript.id = 'db-data-script';
+            newScript.src = 'database.js?v=' + new Date().getTime();
+            newScript.onload = loadBotData;
+            document.head.appendChild(newScript);
+        }, 3000);
+    </script>
+</body>
+</html>
