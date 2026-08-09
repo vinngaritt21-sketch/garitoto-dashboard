@@ -1,1 +1,1 @@
-dataIzinStaf = [{"nama": "KELVIN", "shift": "MALAM", "jenis": "Toilet", "jam_mulai": "02:42", "jam_kembali": "02:49 WIB", "status": "TEPAT WAKTU"}];
+dataIzinStaf = [];
