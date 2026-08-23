@@ -1,1 +1,1 @@
-dataIzinStaf = [{"nama": "MAHESA", "shift": "PAGI", "jenis": "Beli Makan", "jam_mulai": "07:33", "jam_kembali": "07:48 WIB", "status": "TEPAT WAKTU"}, {"nama": "IKSHAN", "shift": "PAGI", "jenis": "Beli Makan", "jam_mulai": "13:15", "jam_kembali": "-", "status": "SEDANG IZIN"}];
+dataIzinStaf = [{"nama": "MAHESA", "shift": "PAGI", "jenis": "Beli Makan", "jam_mulai": "07:33", "jam_kembali": "07:48 WIB", "status": "TEPAT WAKTU"}, {"nama": "IKSHAN", "shift": "PAGI", "jenis": "Beli Makan", "jam_mulai": "13:15", "jam_kembali": "13:34 WIB", "status": "TEPAT WAKTU"}];
